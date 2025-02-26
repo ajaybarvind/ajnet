@@ -1,16 +1,47 @@
 #!/bin/bash
-BASE_DIR="/usr/local/share/ajnet"
 
-read -p "Enter target IP: " ip
-echo "Choose scan type:"
-echo "1) Basic Scan"
-echo "2) Aggressive Scan"
-echo "3) Port Scan"
-read -p "Enter your choice: " scan_type
+# Colors
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+CYAN='\033[0;36m'
+RESET='\033[0m'  # Reset color
 
-case $scan_type in
-    1) nmap "$ip" ;;
-    2) nmap -A "$ip" ;;
-    3) read -p "Enter ports: " ports; nmap -p "$ports" "$ip" ;;
-    *) echo "Invalid choice" ;;
-esac
+# Ask for Target IP
+read -r -p "Enter target IP: " ip
+
+if [[ -z "$ip" ]]; then
+    echo -e "${RED}Error: No IP entered. Exiting.${RESET}"
+    exit 1
+fi
+
+while true; do
+    echo -e "${GREEN}Choose scan type:${RESET}"
+    echo -e "${YELLOW}1) Basic Scan${RESET}"
+    echo -e "${BLUE}2) Aggressive Scan${RESET}"
+    echo -e "${CYAN}3) Port Scan${RESET}"
+    echo -e "${WHITE}4) OS Detection${RESET}"
+    read -r -p "Enter choice (1-4): " scan_choice
+
+    case "$scan_choice" in
+        1) echo -e "${CYAN}Running Basic Scan on $ip...${RESET}"
+           nmap "$ip"
+           break ;;
+        2) echo -e "${CYAN}Running Aggressive Scan on $ip...${RESET}"
+           nmap -A "$ip"
+           break ;;
+        3) read -r -p "Enter ports (comma-separated): " ports
+           if [[ -z "$ports" ]]; then
+               echo -e "${RED}Error: No ports entered. Please try again.${RESET}"
+               continue
+           fi
+           echo -e "${CYAN}Scanning ports $ports on $ip...${RESET}"
+           nmap -p "$ports" "$ip"
+           break ;;
+        4) echo -e "${CYAN}Running OS Detection on $ip...${RESET}"
+           nmap -O "$ip"
+           break ;;
+        *) echo -e "${RED}Invalid choice, please enter a number between 1 and 4.${RESET}" ;;
+    esac
+done

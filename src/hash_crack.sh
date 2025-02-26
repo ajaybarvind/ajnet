@@ -1,16 +1,27 @@
 #!/bin/bash
-BASE_DIR="/usr/local/share/ajnet"
 
-echo "Choose hash cracking tool:"
-echo "1) Hashcat"
-echo "2) John the Ripper"
-read -p "Enter choice: " cracker
+# Colors
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+CYAN='\033[0;36m'
+RESET='\033[0m'  # Reset color
 
-read -p "Enter hash file path: " hash_file
-read -p "Enter wordlist path: " wordlist
+while true; do
+    echo -e "${CYAN}Choose hash cracker:${RESET}"
+    echo -e "${GREEN}1) Hashcat${RESET}"
+    echo -e "${BLUE}2) John the Ripper${RESET}"
+    read -r -p "Enter choice (1-2): " cracker_choice
 
-case $cracker in
-    1) hashcat -m 0 "$hash_file" "$wordlist" ;;  # Change -m 0 for other hash types
-    2) john --wordlist="$wordlist" "$hash_file" ;;
-    *) echo "Invalid choice" ;;
-esac
+    case "$cracker_choice" in
+        1) read -r -p "Enter hash file path: " hash_file
+           read -r -p "Enter wordlist file path: " wordlist
+           hashcat -m 0 "$hash_file" "$wordlist"
+           break ;;
+        2) read -r -p "Enter hash file path: " hash_file
+           read -r -p "Enter wordlist file path: " wordlist
+           john --wordlist="$wordlist" "$hash_file"
+           break ;;
+        *) echo -e "${RED}Invalid choice, please try again.${RESET}" ;;
+    esac
+done
