@@ -3,7 +3,7 @@
 ## Features
 - Perform **Nmap Scans**
 - Crack **Hashes** using Hashcat & John the Ripper
-- **Encrypt & Decrypt** files using Base64, ROT13, and AES-256
+- **Encrypt & Decrypt** files using Base64 and AES-256
 
 ## Installation
 Run:
