@@ -9,11 +9,11 @@ CYAN='\033[0;36m'
 RESET='\033[0m'  # Reset color
 
 while true; do
-    echo -e "${CYAN}Choose operation:${RESET}"
-    echo -e "${GREEN}1) Base64 Encode${RESET}"
-    echo -e "${BLUE}2) Base64 Decode${RESET}"
-    echo -e "${YELLOW}3) ROT13 Encode${RESET}"
-    echo -e "${WHITE}4) ROT13 Decode${RESET}"
+    echo -e "${BLUE}Choose operation:${RESET}"
+    echo -e "${YELLOW}1) Base64 Encode${RESET}"
+    echo -e "${YELLOW}2) Base64 Decode${RESET}"
+    echo -e "${GREEN}3) ROT13 Encode${RESET}"
+    echo -e "${GREEN}4) ROT13 Decode${RESET}"
     read -r -p "Enter choice (1-4): " enc_choice
 
     case "$enc_choice" in

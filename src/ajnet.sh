@@ -22,7 +22,7 @@ show_banner() {
 spinner() {
     local pid=$1
     local delay=0.1
-    local spinstr='|/-\'
+    local spinstr='|/-\\'
     while ps -p "$pid" &>/dev/null; do
         local temp=${spinstr#?}
         printf " [%c]  " "$spinstr"
@@ -31,7 +31,7 @@ spinner() {
         printf "\b\b\b\b\b\b"
     done
     wait "$pid" 2>/dev/null
-    printf "    \b\b\b\b\n"
+    printf "    \b\b\b\n"
 }
 
 # Load configurations
@@ -47,24 +47,27 @@ fi
 # Show banner
 show_banner
 
-# Display menu
+# Main loop to keep running until Ctrl+C
 while true; do
-    echo -e "${GREEN}1) Nmap Scan${RESET}"
+    echo -e "${YELLOW}1) Nmap Scan${RESET}"
     echo -e "${YELLOW}2) Hash Cracking${RESET}"
-    echo -e "${BLUE}3) Encryption/Decryption${RESET}"
+    echo -e "${YELLOW}3) Encryption/Decryption${RESET}"
+    echo -e "${RED}4) Exit${RESET}"
     read -p "Enter your choice: " choice
 
     case $choice in
         1) echo -e "${CYAN}Starting Nmap Scan...${RESET}"
-           "$BASE_DIR/src/nmap_scan.sh"
-           break ;;
+           "$BASE_DIR/src/nmap_scan.sh" ;;
         2) echo -e "${CYAN}Starting Hash Cracking...${RESET}"
-           "$BASE_DIR/src/hash_crack.sh"
-           break ;;
+           "$BASE_DIR/src/hash_crack.sh" ;;
         3) echo -e "${CYAN}Starting Encryption/Decryption...${RESET}"
-           "$BASE_DIR/src/encrypt_decrypt.sh"
-           break ;;
+           "$BASE_DIR/src/encrypt_decrypt.sh" ;;
+        4) echo -e "${RED}Exiting ajnet. Goodbye!${RESET}"
+           exit 0 ;;
         *) echo -e "${RED}Invalid choice, please try again.${RESET}" ;;
     esac
+    echo -e "${GREEN}Returning to main menu...${RESET}\n"
+    sleep 1
+
 done
 

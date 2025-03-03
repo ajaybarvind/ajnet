@@ -17,11 +17,11 @@ if [[ -z "$ip" ]]; then
 fi
 
 while true; do
-    echo -e "${GREEN}Choose scan type:${RESET}"
-    echo -e "${YELLOW}1) Basic Scan${RESET}"
-    echo -e "${BLUE}2) Aggressive Scan${RESET}"
-    echo -e "${CYAN}3) Port Scan${RESET}"
-    echo -e "${WHITE}4) OS Detection${RESET}"
+    echo -e "${BLUE}Choose scan type:${RESET}"
+    echo -e "${GREEN}1) Basic Scan${RESET}"
+    echo -e "${GREEN}2) Aggressive Scan${RESET}"
+    echo -e "${GREEN}3) Port Scan${RESET}"
+    echo -e "${GREEN}4) OS Detection${RESET}"
     read -r -p "Enter choice (1-4): " scan_choice
 
     case "$scan_choice" in
