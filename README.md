@@ -1,4 +1,4 @@
-# ajnet - Network Security Toolkit
+# AJNET - Network Security Toolkit
 
 ### Author: Ajayarvind Balasubramanian
 
