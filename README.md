@@ -2,10 +2,10 @@
 
 ### Author: Ajayarvind Balasubramanian
 
-## 📌 Overview
+## Overview
 **ajnet** is an all-in-one network security toolkit designed for penetration testers, cybersecurity researchers, and ethical hackers. It simplifies security scanning, hash cracking, and encryption/decryption tasks using well-known tools like **Nmap, Hashcat, and John the Ripper**.
 
-## 🚀 Features
+## Features
 - **Nmap Scans**: Perform different types of scans on a target IP.
 - **Hash Cracking**: Crack password hashes using Hashcat or John the Ripper.
 - **Encryption & Decryption**: Encode and decode text using Base64, ROT13, and AES-256.
@@ -14,14 +14,14 @@
 - **Back Navigation**: Return to the main menu after executing any task.
 
 ---
-## 🛠️ Installation
+## Installation
 Run:
 ```bash
 chmod +x install.sh && ./install.sh
 ```
 
 ---
-## 🚀 Usage
+## Usage
 ### **Start the Tool**
 ```bash
 ajnet
@@ -33,7 +33,7 @@ ajnet
 4️⃣ **Exit**: Quit the tool.
 
 ---
-## 🔍 How Each Module Works
+## How Each Module Works
 ### **1️⃣ Nmap Scan**
 - **Basic Scan:** `nmap <IP>`
 - **Aggressive Scan:** `nmap -A <IP>`
@@ -59,7 +59,7 @@ ajnet
 - **AES-256 Encryption/Decryption:** Secure encryption with a password.
 
 ---
-## 📜 License
+## License
 ajnet is licensed under the **MIT License**, allowing for open-source distribution, modification, and use, while still crediting the original author.
 
 ```
@@ -75,13 +75,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ```
 
 ---
-## 💡 Contributions & Issues
+## Contributions & Issues
 Found a bug or want to contribute? Open an issue or submit a pull request on GitHub!
 
-📌 **GitHub Repository:** [ajnet on GitHub](https://github.com/ajaybarvind/ajnet)
+**GitHub Repository:** [ajnet on GitHub](https://github.com/ajaybarvind/ajnet)
 
 ---
-### **✨ Created by Ajayarvind Balasubramanian**
-🚀 Happy Hacking! 🔥
+### ** Created by Ajayarvind Balasubramanian**
+Happy Hacking! 
 
 
